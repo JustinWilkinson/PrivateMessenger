@@ -17,7 +17,7 @@ exports.sendNotifications = functions.database.ref('chats/{messageId}').onCreate
   
       // Get the list of device tokens.
       const tokens: any[] = [];
-      admin.database().ref('tokens').on('value', async function(snap: admin.database.DataSnapshot){ 
+      await admin.database().ref('tokens').once('value', async function(snap: admin.database.DataSnapshot){ 
         if (snap.hasChildren()){
             snap.forEach((childSnapshot: admin.database.DataSnapshot) => { 
                 const value = childSnapshot.val();

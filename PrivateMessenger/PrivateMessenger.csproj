@@ -69,7 +69,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\MessageNotification.cs" />
     <Compile Include="Activities\Chat.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="Extensions\FirebaseExtensions.cs" />
     <Compile Include="Database\TokenValidator.cs" />
     <Compile Include="JavaHelpers\IJavaConvertible.cs" />

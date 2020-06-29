@@ -6,7 +6,6 @@ using Android.Widget;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
-using PrivateMessenger.Abstractions;
 using PrivateMessenger.Database;
 
 namespace PrivateMessenger.Activities
@@ -38,7 +37,7 @@ namespace PrivateMessenger.Activities
                 else
                 {
                     var reference = _database.GetReference("tokens");
-                    reference.AddValueEventListener(new TokenValidator(reference, new Settings(this).FirebaseToken));
+                    reference.AddValueEventListener(new TokenValidator(reference, App.Settings.FirebaseToken));
                     StartActivityForResult(typeof(Chat), ResultCode);
                 }
             }

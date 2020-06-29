@@ -16,7 +16,6 @@ namespace PrivateMessenger.Activities
     public class Chat : AppCompatActivity, IValueEventListener
     {
         private FirebaseUser _user;
-        private Settings _settings;
 
         private ListView _chat;
         private EditText _editText;
@@ -26,7 +25,6 @@ namespace PrivateMessenger.Activities
         {
             base.OnCreate(savedInstanceState);
             _user = FirebaseAuth.Instance.CurrentUser;
-            _settings = new Settings(this);
 
             SetContentView(Resource.Layout.Chat);
             Toast.MakeText(this, $"Welcome {_user.Email}", ToastLength.Short).Show();
@@ -50,7 +48,7 @@ namespace PrivateMessenger.Activities
             }
             else
             {
-                await FirebaseDatabase.Instance.GetReference("chats").PutAsync(new MessageContent(_user.Email, _editText.Text, _settings.FirebaseToken));
+                await FirebaseDatabase.Instance.GetReference("chats").PutAsync(new MessageContent(_user.Email, _editText.Text, App.Settings.FirebaseToken));
                 _editText.Text = "";
             }
         }

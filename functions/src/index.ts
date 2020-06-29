@@ -9,8 +9,8 @@ exports.sendNotifications = functions.database.ref('chats/{messageId}').onCreate
       const messageContent = snapshot.val();
       const text: string = messageContent.Message;
       const payload = {
-        notification: {
-          title: 'Private Messenger: New message',
+        data: {
+          title: `New message from ${messageContent.Email.toString()}`,
           body: text ? (text.length <= 100 ? text : text.substring(0, 97) + '...') : ''
         }
       };
